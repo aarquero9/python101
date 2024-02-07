@@ -5,6 +5,7 @@ listaTrabajadores = []
 #Iniciamos la lista del trabajador
 trabajador = []
 #Bucle while para agregar trabajadores
+#hjhugdshidsfaljoidjosif
 while accion != 'q':
     trabajador = []
     edad = None
