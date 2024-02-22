@@ -12,25 +12,26 @@ Insertar “limones” en una posición del medio de la lista
 Mostrar la lista en orden alfabético	
 
 """
+
 compras = ["platanos", "manzanas", "leche"]
-otralista = ['galletas', "zumo"]
+otralista = ["galletas", "zumo"]
 finalList = compras + otralista
 
 for i in finalList:
     print(i)
 x = len(finalList)
-print(finalList[x-2:x])
-print(finalList[int(x/2)])
-finalList[4] = "zumo de naranja" 
+print(finalList[x - 2 : x])
+print(finalList[int(x / 2)])
+finalList[4] = "zumo de naranja"
 print(finalList)
 finalList.pop()
 print(finalList)
 
-midpoint = len(finalList)//2 
+midpoint = len(finalList) // 2
 print(finalList[midpoint])
 
 print(midpoint)
-finalList = finalList[0:midpoint] + ['limones'] + finalList[midpoint:]
-finalList.insert(2,"pera") 
+finalList = finalList[0:midpoint] + ["limones"] + finalList[midpoint:]
+finalList.insert(2, "pera")
 finalList.sort()
 print(finalList)
