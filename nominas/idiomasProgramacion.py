@@ -1,4 +1,4 @@
-#Listado de idiomas de programación 
+# Listado de idiomas de programación
 IDIOMAS = [
     "Python",
     "Java",

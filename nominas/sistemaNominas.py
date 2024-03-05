@@ -1,5 +1,5 @@
 class Sistema_Nominas:
-    #Calculamos las nominas y las mostramos
+    # Calculamos las nominas y las mostramos
     def calcular_nominas(self, empleados):
         print("Calculando nominas")
         print("===================")

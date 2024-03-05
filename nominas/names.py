@@ -1,4 +1,4 @@
-#Listado de nombres
+# Listado de nombres
 NAMES = [
     "Addilynn",
     "Valentine",
@@ -41,4 +41,4 @@ NAMES = [
     "Boston",
     "Young",
 ]
-print (NAMES[1])
+print(NAMES[1])

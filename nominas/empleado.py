@@ -1,4 +1,4 @@
-#clase base de empleado con nombre y salario
+# clase base de empleado con nombre y salario
 class Empleado:
 
     def __init__(self, name, salario):
