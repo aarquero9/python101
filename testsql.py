@@ -2,21 +2,20 @@ import sqlite3
 
 conn = sqlite3.connect("pelis.db")
 
-# conn.execute("CREATE TABLE Peliculas (id integer, nombre text, duracion integer)")
+conn.execute("CREATE TABLE Peliculas (id integer PRIMARY KEY AUTOINCREMENT , nombre text, duracion real)")
+# sData = (3, "Tiburon", 2)
 
-sData = (3, "Tiburon", 2)
+# cur = conn.cursor()
 
-cur = conn.cursor()
+# cur.execute("SELECT * FROM Peliculas")
 
-cur.execute("SELECT * FROM Peliculas")
+# rows = cur.fetchall()
 
-rows = cur.fetchall()
+# for i in rows:
+#     print (i[1])
+# # cur.execute("INSERT INTO PELICULAS (id,nombre,duracion) VALUES(?,?,?);", sData)
 
-for i in rows:
-    print (i[1])
-# cur.execute("INSERT INTO PELICULAS (id,nombre,duracion) VALUES(?,?,?);", sData)
-
-# conn.commit()
+# # conn.commit()
 
 
 conn.close()
