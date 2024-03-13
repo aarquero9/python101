@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina dinamica</title>
+</head>
+<body>
+    <h1>Primera Pagina productos</h1>
+       {% for f in listap%}
+            <div>{{f.nombre}}</div>
+            <div>{{f.valor}} €</div>
+            <img src={{f.imagen}} alt="image" />
+       {%endfor%}
+</body>
+</html>
