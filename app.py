@@ -1,12 +1,16 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 import sqlite3
 import json
+
+
 class Producto:
-    def __init__(self,id,nombre,imagen,valor):
+    def __init__(self, id, nombre, imagen, precio):
         self.id = id
         self.nombre = nombre
         self.imagen = imagen
-        self.valor = valor
+        self.precio = precio
+
+
 app = Flask(__name__)
 
 
@@ -58,14 +62,66 @@ def dinamic():
     frutas = ["Manzana", "PERA", "Piña", "KIWI", "Fresa", "MANGO"]
     return render_template("injection1.html", name=name, age=age, frutas=frutas)
 
+
 @app.route("/productos")
 def productos():
-    p1 = Producto(1, 'Raqueta', "https://tenistodo-tender.com/cdn/shop/products/babolat-falcon-naciagnieta_1024x1024.jpg?v=1649456468",1.5)
-    p2 = Producto(2, 'Labadora', "https://i0.wp.com/cabauoportunitats.com/wp-content/uploads/2017/10/Rentadora-BEKO-59x56x85cm.jpg?fit=100%2C100&ssl=1", 20)
-    p3 = Producto(2, 'Avion',"https://www.mundodeportivo.com/urbantecno/hero/2024/03/recreacion-del-proyecto-x-66a.jpg?width=1200&aspect_ratio=16:9", 25)
+    p1 = Producto(
+        1,
+        "Raqueta",
+        "https://tenistodo-tender.com/cdn/shop/products/babolat-falcon-naciagnieta_1024x1024.jpg?v=1649456468",
+        1.5,
+    )
+    p2 = Producto(
+        2,
+        "Labadora",
+        "https://i0.wp.com/cabauoportunitats.com/wp-content/uploads/2017/10/Rentadora-BEKO-59x56x85cm.jpg?fit=100%2C100&ssl=1",
+        20,
+    )
+    p3 = Producto(
+        2,
+        "Avion",
+        "https://www.mundodeportivo.com/urbantecno/hero/2024/03/recreacion-del-proyecto-x-66a.jpg?width=1200&aspect_ratio=16:9",
+        25,
+    )
+    p4 = Producto(
+        2,
+        "Toy Duck",
+        "/images/toyDuck.jpg",
+        25,
+    )
     print(p1)
-    listap = [p1,p2,p3]
-    return render_template("productos.html",listap = listap)
+    listap = [p1, p2, p3, p4]
+    return render_template("productos.html", listap=listap)
+
+
+# CRUD
+
+
+def createProducts(id, name, description, price, image):
+    conn = sqlite3.connect("productos.db")
+    cur = conn.cursor()
+    producto = (id, name, description, price, image)
+    cur.execute("INSERT INTO PELICULAS (nombre,duracion) VALUES(?,?,?,?,?);", producto)
+    conn.commit()
+    conn.close()
+
+
+@app.route("/create")
+def create():
+    return render_template("create.html", createProducts=createProducts)
+
+
+@app.route("/login", methods=["GET",'POST'])
+def login():
+    if request.method == "GET":
+        return render_template("login.html")
+    else:
+        username  = request.form["username"]
+        password  = request.form["password"]
+        if username and password:
+             return redirect('/productos')
+        else:
+            return redirect('/login')
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
