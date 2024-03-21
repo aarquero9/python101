@@ -1,6 +1,7 @@
 import streamlit as st
 import mathBasic as math
 from streamlit_modal import Modal
+import pandas as pd
 
 modal = Modal(key="Demo Key",title="Add")              
 def calculate(action,num1,num2):
@@ -40,6 +41,10 @@ with right_column:
 
 add_slider = st.sidebar.slider("Select a range of valors", 0.0, 100.0,(25.0,75.0))
 st.sidebar.video("https://www.youtube.com/watch?v=Ahi-btqB8N4&ab_channel=UFC")
+
+df2 = pd.read_csv("https://raw.githubusercontent.com/sivabalanb/Data-Analysis-with-Pandas-and-Python/master/pokemon.csv")
+
+st.data_editor(df2)
 # st.write(oper)
 # def testingFuntion(edad): 
 #     if edad :
